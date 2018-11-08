@@ -1,0 +1,52 @@
+:01-33 HDMI to Pixel Port - TDM audio - SDR8av Out:
+E0 FF FF ; SW reset
+delay 5  ;
+E0 01 76 ; ADI Required Write
+E0 F2 01 ; Enable I2C read auto-increment
+E0 F3 4C ; DPLL Map address set to 0x4C
+E0 F4 44 ; CP Map address set to 0x44
+E0 F5 68 ; HDMI RX Map address set to 0x68
+E0 F6 6C ; EDID Map address set to 0x6C
+E0 F7 64 ; HDMI RX Repeater Map address set to 0x64
+E0 F8 62 ; HDMI RX Infoframe Map address set to 0x62
+E0 F9 F0 ; CBUS Map address set to 0xF0
+E0 FA 82 ; CEC Map address set to 0x82
+E0 FB F2 ; SDP Main Map address set to 0xF2
+E0 FC 90 ; CSI-TXB Map address set to 0x90
+E0 FD 94 ; CSI-TXA Map address set to 0x94
+E0 00 40 ; Disable chip powerdown & Enable HDMI Rx block
+E0 64 40 83 ; enable HDCP 1.1
+E0 68 00 08 ; foreground channel = A
+E0 68 3D 10 ; ADI Required Write
+E0 68 3E 7B ; ADI Required Write
+E0 68 3F 5E ; ADI Required Write                   
+E0 68 4E FE ; ADI Required Write                   
+E0 68 4F 18 ; ADI Required Write                   
+E0 68 57 A3 ; ADI Required Write
+E0 68 58 04 ; ADI Required Write                   
+E0 68 85 10 ; ADI Required Write
+E0 68 83 00 ; Enable all terminations              
+E0 68 98 FF ; ADI Required Write                   
+E0 68 99 A3 ; ADI Required Write
+E0 68 9A 00 ; ADI Required Write
+E0 68 9B 0A ; ADI Required Write
+E0 68 9D 40 ; ADI Required Write
+E0 68 CB 09 ; ADI Required Write                   
+E0 68 A3 01 ; ADI Required Write
+E0 68 BE 00 ; ADI Required Write
+E0 68 0F C0 ; Audio Mute Speed Set to Fastest (Smallest Step Size) and manually bypass audio delay line
+E0 68 6D 80 ; Enable TDM Output Mode
+E0 68 6C 01 ; HPA manual mode
+E0 68 F8 01 ; HPA asserted
+E0 44 3E 08 ; uv_dval_inv [3] = 1'b1 (Pr, Pb timing adjust)
+E0 03 86 ; Insert AV codes, CP Free run Enable
+E0 04 40 ; ADI Required Write
+E0 0E 00 ; Enable LLC, Pixel, SPI and Audio outputs
+E0 10 20 ; Enable Pixel port and route from CP core
+E0 12 F4 ; Output is 8-bit SDR 422
+E0 4C B5 03 ; MCLK set to 512 Fs
+E0 0C FF ; llc_dll_en, llc_ddl_mux, LLC_DLL_double = 1'b1 , llc_dll_phase = 5'b11111 (31d)
+E0 1D 08 ; inv_llc = 1'b0, drv_llc_pad = 2'b10
+End
+
+E0 FF 80 ; SW reset

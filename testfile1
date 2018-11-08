@@ -1,0 +1,14 @@
+# test file 1
+; comment 2
+delay 1
+delay 2us
+delay 3ms
+delay 1s
+
+# write reset
+e0 ff ff
+delay 1 # ms (default unit)
+
+W 70 ff 0b10000000 # also write reset, but more explicit
+
+R 70 00 # read register 00
