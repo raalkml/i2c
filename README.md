@@ -1,4 +1,4 @@
-    i2c, an utility for sequences of I2C operations
+# i2c, an utility for sequences of I2C operations
 
 The utility was created to support semi-automated testing of devices on I2C
 bus from a master node.
